@@ -1,0 +1,12 @@
+/* 最初は透明で、30px下に下げておく */
+.js-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+/* このクラスがついたら元の位置に戻る */
+.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
