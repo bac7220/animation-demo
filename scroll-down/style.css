@@ -1,0 +1,33 @@
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 外枠（線が通る道） */
+.scroll-line {
+  width: 2px;
+  height: 60px;
+  /* background-color: #eee; */
+  position: relative;
+  overflow: hidden;
+}
+
+/* 動く線本体 */
+.scroll-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333; /* 線の色 */
+  animation: scrollLineAnim 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scrollLineAnim {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
