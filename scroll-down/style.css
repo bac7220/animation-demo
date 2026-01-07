@@ -5,6 +5,10 @@
   gap: 10px;
 }
 
+.scroll-text {
+  writing-mode: vertical-rl; /* 縦書きにする（デフォルトで英字は横に倒れます） */
+}
+
 /* 外枠（線が通る道） */
 .scroll-line {
   width: 2px;
