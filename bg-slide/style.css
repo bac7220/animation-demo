@@ -41,3 +41,28 @@
   /* アニメーションの設定 */
   animation: bgSlideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+/* 目印 */
+.arrow {
+  position: relative;
+}
+.arrow::before {
+  content: "";
+  position: absolute;
+  top: 40vh;
+  left: 7.5%;
+  width: 10px;
+  height: 100px;
+  background-color: #666;
+  transform: rotate(-45deg);
+}
+.arrow::after {
+  content: "";
+  position: absolute;
+  top: 40vh;
+  left: 12%;
+  width: 10px;
+  height: 100px;
+  transform: rotate(45deg);
+  background-color: #666;
+}
