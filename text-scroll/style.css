@@ -1,0 +1,55 @@
+/* テキスト量が変わっても一定の早さで流すために設定 */
+/* jsでテキスト量自動取得 */
+:root {
+  /* 1秒間に進ませたい距離（スピード） */
+  --speed: 100;
+}
+
+.marquee-wrapper {
+  overflow: hidden; /* はみ出た部分は隠す */
+}
+
+.marquee-content {
+  display: flex; /* 横に並べる */
+  animation: infinite-scroll calc((var(--content-width) / var(--speed)) * 1s) linear infinite;
+  flex-wrap: nowrap;
+  will-change: transform; /* 動きを滑らかにする */
+  width: max-content; /* 子要素２つ分の幅をもたせる */
+}
+
+.reverse {
+  transform: translateX(-50%);
+  animation: infinite-scroll-reverse calc((var(--content-width) / var(--speed)) * 1s) linear
+    infinite;
+  /* animation-direction: reverse; */
+}
+
+/* ホバーしたら一時停止 */
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+.marquee-content > span {
+  font-size: 80px;
+  font-weight: 900;
+  white-space: nowrap;
+  flex-shrink: 0; /* 各テキストが同じ幅を持つようになる */
+}
+
+@keyframes infinite-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes infinite-scroll-reverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
