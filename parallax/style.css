@@ -1,0 +1,47 @@
+body {
+  height: 3000px;
+}
+
+.height500 {
+  height: 500px;
+}
+
+.modern-parallax {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  /* 視点（3D感）の定義 */
+  view-timeline: --section-timeline block;
+}
+
+.parallax-img {
+  width: 100%;
+  height: 70vh; /* 少し長めにして動く余白を作る */
+  object-fit: cover;
+  object-position: center top;
+  position: absolute;
+  top: -15%;
+
+  /* スクロールに合わせて動かす設定 */
+  animation: parallax-move linear;
+  animation-timeline: --section-timeline;
+  animation-range: entry 0% exit 100%;
+}
+
+@keyframes parallax-move {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(50%);
+  } /* 画像をゆっくり下にずらす */
+}
+
+.parallax-text {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 8vw;
+  text-align: center;
+  margin-top: 40vh;
+}
