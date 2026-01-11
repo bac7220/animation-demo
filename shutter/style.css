@@ -1,0 +1,48 @@
+h2{
+  text-align: center;
+}
+
+.height500{
+  height: 1000px;
+}
+
+.shutter-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  view-timeline: --shutter-timeline block;
+  margin-bottom: 100px;
+}
+
+.shutter-window {
+  /* width: 80%; */
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.shutter-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  
+  /* 2. シャッターが開くアニメーションを紐付け */
+  animation: shutter-open linear forwards;
+  animation-timeline: --shutter-timeline;
+  /* 画面の真ん中あたりに来た時に「パカッ」と開くように調整 */
+  animation-range: entry -10% cover 30% ;
+}
+
+/* 3. シャッターのアニメーション内容 */
+@keyframes shutter-open {
+  0% {
+    /* 左右50%ずつ隠して、真ん中に閉じてる状態 */
+    clip-path: inset(0 50% 0 50%);
+    transform: scale(1.2); /* 少し拡大しておくと開いた時に迫力が出る */
+  }
+  100% {
+    /* 隠し場所をゼロにする */
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}

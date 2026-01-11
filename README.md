@@ -1,4 +1,4 @@
-# CSS Scroll Animation Samples
+# CSS Animation Samples
 
 Git/GitHubの練習として公開しています。
 
