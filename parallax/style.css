@@ -7,20 +7,25 @@ body {
 }
 
 .modern-parallax {
-  height: 100vh;
+  height: 500px;
+  margin-bottom: 100px;
   overflow: hidden;
   position: relative;
   /* 視点（3D感）の定義 */
   view-timeline: --section-timeline block;
 }
 
+.parallax-content {
+  height: 100%;
+}
+
 .parallax-img {
   width: 100%;
-  height: 70vh; /* 少し長めにして動く余白を作る */
+  height: 200%; /* 少し長めにして動く余白を作る */
+  top: -50%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center bottom;
   position: absolute;
-  top: -15%;
 
   /* スクロールに合わせて動かす設定 */
   animation: parallax-move linear;
@@ -30,11 +35,13 @@ body {
 
 @keyframes parallax-move {
   from {
-    transform: translateY(0);
+    /* 3. 移動量を大きく（200%の高さの画像なら25%〜30%くらいまでOK） */
+    transform: translateY(0) scale(1);
   }
   to {
-    transform: translateY(50%);
-  } /* 画像をゆっくり下にずらす */
+    /* 移動だけでなく、少しだけ拡大（scale）を混ぜると奥行きが倍増します！ */
+    transform: translateY(25%) scale(1.1);
+  }
 }
 
 .parallax-text {
