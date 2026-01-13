@@ -1,0 +1,35 @@
+.circle-box {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.circle-text {
+  position: relative;
+  /* 1. 円のサイズを指定 */
+  width: 100px;
+  height: 100px;
+  animation: rotate-text 10s linear infinite;
+}
+
+.circle-text span {
+  position: absolute;
+  left: 50%;
+  font-size: 14px;
+  /* 2. 文字を円のサイズに合わせる */
+  /* 3. 回転の軸を「円の半径（50px）」に合わせる */
+  transform-origin: 0 50px;
+
+  /* 4. 正しい計算式：(360度 / 全体の文字数) * 今の番号 */
+  /* 10文字なので、360/10 = 36deg ずつずらします */
+  transform: translateX(-50%) rotate(calc(var(--i) * 36deg));
+  font-weight: bold;
+}
+
+@keyframes rotate-text {
+  to {
+    transform: rotate(360deg);
+  }
+}
