@@ -1,0 +1,47 @@
+.smart-link-left,
+.smart-link-right{
+  text-align: center;
+  padding: 40px;
+}
+
+
+
+.smart-link {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 5px 0;
+  margin: 0 15px;
+}
+
+.smart-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #764ba2;
+  
+  transform: scaleX(0);
+  transform-origin: left;
+
+  
+  /* アニメーションの速度 */
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smart-link:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* アニメーションの起点を右に設定 */
+.smart-link-right .smart-link::after{
+  transform-origin: right;
+}
+/* ホバーしたら左から出現 */
+.smart-link-right .smart-link:hover::after{
+  transform-origin: left;
+}
