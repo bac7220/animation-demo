@@ -1,0 +1,49 @@
+body{
+  background-color: #f2f0ea;
+}
+.wrapper{
+padding: 60px;
+}
+
+.height500{
+  height: 500px;
+}
+
+.reveal-container{
+  display: flex;
+  gap: 10%;
+  align-items: center;
+}
+
+.reveal-box {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden; /* はみ出しを隠す */
+  flex-shrink: 0;
+}
+
+
+.reveal-img {
+  width: 100%;
+  display: block;
+}
+
+.reveal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #545157; /* 消える色 */
+  
+  /* 初期状態：位置はそのまま */
+  transform: translateX(0);
+  /* 0.3秒で動く設定 */
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 画面に入って .is-active が付いたら、右に100%飛ばす */
+.reveal-box.is-active .reveal-overlay {
+  transform: translateX(100%);
+}
