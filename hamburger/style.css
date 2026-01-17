@@ -116,7 +116,7 @@
 }
 
 /* 右軸で回転するアニメーション */
-*/ .anim-morph .bar {
+ .anim-morph .bar {
   transition: all 0.3s ease;
 }
 
