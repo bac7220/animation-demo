@@ -1,0 +1,296 @@
+/* 全体を横並びに */
+.wrapper {
+  margin: 100px;
+  display: flex;
+  gap: 30px;
+}
+
+
+/* ハンバーガーメニューの基本スタイル */
+.hamburger {
+  --hamburger-bg: #e0e0e0;
+  --hamburger-bar: #111;
+  --hamburger-border: transparent;
+  position: relative;
+  width: 56px;
+  height: 44px;
+  border: 1px solid var(--hamburger-border);
+  /* border-radius: 10px; */
+  background-color: var(--hamburger-bg);
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+.bar {
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  border-radius: 5px;
+  background-color: var(--hamburger-bar);
+  left: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.bar {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bar:first-of-type {
+  top: 50%;
+  transform: translate(-50%, calc(-50% - 8px));
+}
+
+.bar:nth-of-type(2) {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bar:nth-of-type(3) {
+  top: 50%;
+  transform: translate(-50%, calc(-50% + 8px));
+}
+
+
+
+/* theme variations */
+.theme-gray {
+  --hamburger-bg: #e0e0e0;
+  --hamburger-bar: #111;
+}
+
+
+
+/* シンプルに×になるアニメーション */
+
+.anim-simple.is-action .bar:first-of-type {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.anim-simple.is-action .bar:nth-of-type(2) {
+  opacity: 0;
+}
+
+.anim-simple.is-action .bar:nth-of-type(3) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* くるっと一回転して×になるアニメーション */
+.anim-rotation.is-action .bar:first-of-type {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(315deg);
+}
+
+.anim-rotation.is-action .bar:nth-of-type(2) {
+  opacity: 0;
+}
+
+.anim-rotation.is-action .bar:nth-of-type(3) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-315deg);
+}
+
+
+/* 左軸で回転するアニメーション */
+.anim-pivot .bar {
+  transition: all 0.3s ease-in-out;
+}
+
+.anim-pivot.is-action .bar:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(135deg);
+  top: 50%;
+  transform-origin: center;
+}
+
+.anim-pivot.is-action .bar:nth-child(2) {
+  width: 0;
+}
+
+.anim-pivot.is-action .bar:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(45deg);
+  top: 50%;
+  transform-origin: center;
+}
+
+/* 右軸で回転するアニメーション */
+*/ .anim-morph .bar {
+  transition: all 0.3s ease;
+}
+
+.anim-morph.is-action .bar:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+  top: 50%;
+}
+
+.anim-morph.is-action .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.anim-morph.is-action .bar:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(135deg);
+  top: 50%;
+}
+
+/* 真ん中の棒が飛んでいくアニメーション */
+.anim-burst.is-action .bar:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+  top: 50%;
+}
+
+.anim-burst.is-action .bar:nth-child(2) {
+  opacity: 0;
+  transform: translate(100%);
+}
+
+.anim-burst.is-action .bar:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+  top: 50%;
+}
+
+
+/* ワンテンポ送れて動くアニメーション */
+
+
+.line {
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  border-radius: 5px;
+  background-color: var(--hamburger-bar);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out;
+}
+
+.line:first-of-type {
+  transform: translate(-50%, calc(-50% - 6px));
+}
+
+.line:nth-of-type(2) {
+  transform: translate(-50%, calc(-50% + 6px));
+}
+
+
+.anim-flip.is-action .line:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(-135deg);
+  transition: top .22s cubic-bezier(.33333, 0, .66667, .33333) .2s,
+    transform .28s cubic-bezier(.215, .61, .355, 1) .2s;
+}
+
+.anim-flip.is-action .line:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+
+/* 一度真ん中に集まり、×に変化 */
+
+
+.slide-line {
+  position: absolute;
+  top: 0;
+  left: 13%;
+  width: 40px;
+  height: 3px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background-color: var(--hamburger-bar);
+  transition: top 0.3s ease, transform 0.3s ease;
+  transition-property: transform, top;
+  transition-duration: 0.3s;
+}
+
+.slide-line:nth-of-type(1) {
+  top: 30%;
+  transition-delay: 0s, 0.3s;
+}
+
+
+.slide-line:nth-of-type(2) {
+  top: 65%;
+  transition-delay: 0s, 0.3s;
+}
+
+.is-action .slide-line:nth-of-type(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(-30deg);
+  transition-delay: 0.3s, 0s;
+}
+
+.is-action .slide-line:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%) rotate(30deg);
+  transition-delay: 0.3s, 0s;
+}
+
+/* ＋マークから回転して× */
+
+.anim-twist .bar {
+  transition-delay: 0.6s;
+}
+
+.anim-twist .bar:nth-of-type(2) {
+  transition-delay: 0.5s;
+}
+
+.anim-twist.is-action .bar:nth-of-type(1) {
+  top: 0;
+  opacity: 0;
+  transition: top .5s ease, opacity .5s ease;
+}
+
+.anim-twist.is-action .bar:nth-of-type(2) {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.anim-twist.is-action .bar:nth-of-type(3) {
+  top: 100%;
+  opacity: 0;
+  transition: top 0.5s ease, opacity 0.5s ease;
+}
+
+.anim-twist .v-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  border-radius: 5px;
+  background-color: var(--hamburger-bar);
+}
+
+.anim-twist .v-bar:nth-of-type(4) {
+  opacity: 0;
+  height: 40px;
+  width: 3px;
+  transition: opacity .3s ease, transform 0.3s ease;
+  transition-delay: 0.3s, .3s;
+  /* 先に表示 → 後から回転 */
+}
+
+.anim-twist.is-action .v-bar:nth-of-type(4) {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition-delay: 0s, 0.3s;
+}
+
+.anim-twist .v-bar:nth-of-type(5) {
+  height: 3px;
+  max-width: 40px;
+  width: 0%;
+  transform-origin: center;
+  transition: width .3s ease, transform 0.3s ease;
+  transition-delay: 1s, .3s;
+  /* 先に表示 → 後から回転 */
+}
+
+.anim-twist.is-action .v-bar:nth-of-type(5) {
+  max-width: 40px;
+  width: 100%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition-delay: 0s, .3s;
+}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hamburger-btn</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- シンプルに× -->
+      <button
+        id="simple"
+        type="button"
+        class="hamburger anim-simple theme-gray"
+        aria-label="Simple gray"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <!-- くるっと一回転 -->
+      <button
+        id="rotation"
+        type="button"
+        class="hamburger anim-rotation theme-gray"
+        aria-label="rotation gray"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <!-- 左軸で回転 -->
+      <button
+        id="pivot"
+        type="button"
+        class="hamburger anim-pivot theme-gray"
+        aria-label="pivot gray"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <!-- 右軸で回転 -->
+      <button
+        id="morph"
+        type="button"
+        class="hamburger anim-morph theme-gray"
+        aria-label="morph gray"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <!-- 真ん中の棒が飛んでいく -->
+      <button
+        id="burst"
+        type="button"
+        class="hamburger anim-burst theme-gray"
+        aria-label="burst gray"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- ワンテンポ送れて動く -->
+      <button id="flip" type="button" class="hamburger anim-flip theme-gray" aria-label="Flip">
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+      <!-- 一度真ん中に集まり、×に変化する -->
+      <button
+        id="slide"
+        type="button"
+        class="hamburger anim-slide theme-gray"
+        aria-label="Flip gray"
+      >
+        <span class="slide-line"></span>
+        <span class="slide-line"></span>
+      </button>
+
+      <!-- ＋マークから回転して× -->
+      <button
+        id="twist"
+        type="button"
+        class="hamburger anim-twist theme-gray"
+        aria-label="+から回転 gray"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="v-bar"></span>
+        <span class="v-bar"></span>
+      </button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
