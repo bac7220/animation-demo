@@ -1,0 +1,56 @@
+.wrapper {
+  margin: 100px;
+}
+
+.shat-btn {
+  position: relative;
+  padding: 15px 40px;
+  background-color: #1a1a1a;
+  /* 少し暗めが映えます */
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* 1. 2本の線の共通設定 */
+.shat-btn::before,
+.shat-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -170%;
+  /* スタート位置 */
+  width: 150%;
+  height: 100%;
+  transform: skewX(-25deg);
+  z-index: -1;
+}
+
+/* 2. 1本目の線（白っぽい光） */
+.shat-btn::before {
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: left 0.3s ease-in;
+}
+
+/* 3. 2本目の線（ブランドカラーなど） */
+.shat-btn::after {
+  background-color: rgba(118, 75, 162, 0.6);
+  /* 紫色の光 */
+  /* 少しだけ時間を遅らせるのがコツ！ */
+  transition: left 0.3s ease-in 0.1s;
+}
+
+/* 4. ホバー時に一気に右へ突き抜けさせる */
+.shat-btn:hover::before,
+.shat-btn:hover::after {
+  left: 150%;
+}
+
+/* 文字を消さないためのおまじない */
+.shat-btn span {
+  position: relative;
+  z-index: 2;
+}
