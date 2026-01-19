@@ -1,3 +1,9 @@
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .depth-scene {
   height: 500vh; /* スクロール量 */
 }
@@ -30,7 +36,7 @@
   height: 100%;
   clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
   z-index: 3;
-  transform-origin: left top;
+  transform-origin: right top;
   margin-top: -300px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   position: relative;
@@ -54,7 +60,7 @@
 @keyframes move-layer-2 {
   to {
     /* layer-1よりたくさん上にずらすことで奥行きが出る */
-    transform: skewY(-5deg) translateY(-200px);
+    transform: skewY(-5deg) translateY(-400px);
   }
 }
 
