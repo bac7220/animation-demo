@@ -1,0 +1,66 @@
+.depth-scene {
+  height: 500vh; /* スクロール量 */
+}
+
+.scroll-target {
+  background-color: aliceblue;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.scroll-layer {
+  background-color: antiquewhite;
+  transform: skewY(6deg);
+  transform-origin: right top;
+  height: 300px;
+  width: 100%;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+  /* 1. スクロールに連動させる設定 */
+  animation: move-layer-1 linear forwards;
+  animation-timeline: scroll();
+  /* 最初の100vh（targetが画面にいる間）でアニメーションを完結させる */
+  animation-range: 0 100vh;
+}
+
+.scroll-layer-2 {
+  background-color: rgb(158, 148, 136);
+  height: 100%;
+  clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+  z-index: 3;
+  transform-origin: left top;
+  margin-top: -300px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 3;
+
+  /* 2. layer-1より大きく動かして「ズレ」を作る */
+  animation: move-layer-2 linear forwards;
+  animation-timeline: scroll();
+  animation-range: 0 100vh;
+}
+
+/* それぞれのキーフレーム（skewYを維持したまま、移動距離だけ変える）
+*/
+@keyframes move-layer-1 {
+  to {
+    /* 少しだけ上にずらす */
+    transform: skewY(6deg) translateY(-100px);
+  }
+}
+
+@keyframes move-layer-2 {
+  to {
+    /* layer-1よりたくさん上にずらすことで奥行きが出る */
+    transform: skewY(-5deg) translateY(-200px);
+  }
+}
+
+.new-section {
+  background-color: aliceblue;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
