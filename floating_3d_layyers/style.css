@@ -1,0 +1,84 @@
+/* 基本のレイアウト */
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 80%;
+  height: 60vh;
+  /* 空間に奥行きを出す */
+  perspective: 1200px;
+}
+
+.float-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  
+  /* 1. アニメーションの共通設定 */
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  /* 【ここがポイント！】行きっぱなしにせず、逆再生で戻ってくる */
+  animation-direction: alternate;
+}
+
+/* 層ごとの動きの「差」で奥行きを出す */
+
+.layer-back {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+  z-index: 1;
+  /* ゆっくり、小さく動く */
+  animation-name: float-back;
+  animation-timing-function: ease-in-out;
+}
+
+.layer-mid {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px); /* すりガラス効果 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  clip-path: polygon(0 20%, 100% 10%, 100% 100%, 0 90%);
+  z-index: 2;
+  /* 中くらいの速さで動く */
+  animation-name: float-mid;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.5s; /* 動きを少しずらす */
+}
+
+.layer-front {
+  z-index: 3;
+  color: white;
+  /* 最新の linear() でバネのような質感に */
+  animation-name: float-front;
+  animation-timing-function: linear(0, 0.35, 0.68, 0.82, 0.95, 1.05, 1.1, 1.05, 0.98, 1);
+}
+
+/* キーフレーム設定：奥行き（Z軸）と回転を往復させる */
+
+@keyframes float-back {
+  from { transform: translateZ(-200px) rotateX(5deg); }
+  to   { transform: translateZ(-150px) rotateX(10deg); }
+}
+
+@keyframes float-mid {
+  from { transform: translateZ(0) rotateY(-5deg); }
+  to   { transform: translateZ(50px) rotateY(5deg); }
+}
+
+@keyframes float-front {
+  from { transform: translateZ(150px) scale(1); }
+  to   { transform: translateZ(200px) scale(1.05); }
+}
