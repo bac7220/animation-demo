@@ -1,0 +1,108 @@
+.wrapper {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000; /* 黒背景で文字を際立たせます */
+}
+
+
+.breathing-text {
+  /* 読み込んだバリアブルフォントを指定 */
+  font-family: 'Inter', sans-serif;
+  font-size: 10vw;
+  color: #fff;
+  
+  animation: breathe 4s infinite alternate;
+  /* 2025年最新の linear() でさらに滑らかに */
+  animation-timing-function: linear(0, 0.2, 0.5, 0.8, 1);
+}
+
+@keyframes breathe {
+  0% {
+    /* 太さを最小に */
+    font-variation-settings: "wght" 100;
+    letter-spacing: 0.3em;
+    opacity: 0.2;
+  }
+  100% {
+    /* 太さを最大に（バリアブルフォントなら中間も補完されます） */
+    font-variation-settings: "wght" 900;
+    letter-spacing: -0.05em;
+    opacity: 1;
+  }
+}
+
+
+.modern-breathing {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8vw;
+  text-align: center;
+  color: white;
+  
+  /* 4秒かけて往復。最新の linear() でバネ感を出す */
+  animation: mega-breathe 4s infinite alternate linear(0, 0.2, 0.5, 0.8, 1);
+}
+
+@keyframes mega-breathe {
+  0% {
+    font-variation-settings: "wght" 100;
+    letter-spacing: 0.5em; /* 細い時は広げて、空間を演出 */
+    filter: blur(2px);     /* 遠くにいるようなボカシ */
+  }
+  100% {
+    font-variation-settings: "wght" 900;
+    letter-spacing: -0.02em;
+    filter: blur(0px);
+  }
+}
+
+
+.oswald-breathe {
+  font-family: 'Oswald', sans-serif;
+  font-size: 12vw;
+  color: #fff;
+  text-align: center;
+  /* 2025年最新：粘り気のあるバネのような動き */
+  animation: oswald-anim 3s infinite alternate linear(0, 0.4, 0.7, 0.9, 1);
+}
+
+@keyframes oswald-anim {
+  0% {
+    font-variation-settings: "wght" 200;
+    letter-spacing: -0.05em;
+    opacity: 0.4;
+  }
+  100% {
+    font-variation-settings: "wght" 700;
+    letter-spacing: 0.2em; /* 太くなると同時に広がる */
+    opacity: 1;
+  }
+}
+
+
+
+.playfair-breathe {
+  font-family: 'Playfair Display', serif;
+  font-size: 10vw;
+  color: #f1c40f; /* ゴールド系の色にするとさらにリッチに */
+  text-align: center;
+  /* 4秒かけてゆったりと呼吸 */
+  animation: playfair-anim 4s infinite alternate ease-in-out;
+}
+
+@keyframes playfair-anim {
+  0% {
+    font-variation-settings: "wght" 400;
+    font-style: italic; /* 斜体（イタリック）を混ぜるのもおしゃれ */
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  100% {
+    font-variation-settings: "wght" 900;
+    font-style: italic;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
