@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 1. 反転するヘッダーの設定 */
+.main-header {
+  position: fixed; /* 常に上に固定 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 100; /* 一番上に配置 */
+
+  mix-blend-mode: difference;
+  color: white; /* ベースの色を白にする */
+}
+
+.logo,
+nav {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  justify-content: center;
+}
+
+/* 2. セクションの設定 */
+.section {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section h1 {
+  font-size: 5vw;
+}
+
+/* 背景が黒のセクション */
+.dark {
+  background-color: #000;
+  color: #fff;
+}
+
+/* 背景が白のセクション */
+.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.brown {
+  background-color: rgb(141, 92, 29);
+  color: #000;
+}
