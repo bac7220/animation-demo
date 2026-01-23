@@ -1,0 +1,69 @@
+
+.wrapper{
+  max-width: 1000px;
+  margin:0 auto;
+  height: auto;
+  padding-block: 200px;
+}
+
+img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@property --mask-size {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+.mask-container {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  /* height: 100vh; スクロールを確認しやすいよう大きく */
+  background-color: #111;
+  overflow: hidden;
+  margin-bottom: 50px;
+  aspect-ratio: 16 / 9;
+}
+
+.mask-reveal {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 最初は 0%（霧がかかった状態） */
+  --mask-size: 0%;
+  transition: --mask-size 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* JSで active クラスがついたら 100%（霧が晴れる）にする */
+.mask-reveal.active {
+  --mask-size: 100%;
+}
+
+/* --- 3つのパターン定義 --- */
+
+/* A. 真ん中から円状 */
+.type-center {
+  mask-image: radial-gradient(circle at center, black var(--mask-size), transparent calc(var(--mask-size) + 15%));
+}
+
+/* B. 下から水平に */
+.type-bottom {
+  mask-image: linear-gradient(to top, black var(--mask-size), transparent calc(var(--mask-size) + 15%));
+}
+
+/* C. 左下から円状 */
+.type-bottom-left {
+  mask-image: radial-gradient(circle at bottom left, black var(--mask-size), transparent calc(var(--mask-size) + 20%));
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; font-size: 3rem; font-weight: bold;
+  opacity: 0.1; pointer-events: none;
+}

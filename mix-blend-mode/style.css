@@ -3,6 +3,8 @@ body {
   font-family: sans-serif;
 }
 
+
+
 /* 1. 反転するヘッダーの設定 */
 .main-header {
   position: fixed; /* 常に上に固定 */
