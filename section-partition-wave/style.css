@@ -1,0 +1,65 @@
+      body { margin: 0; background-color: #f8f9fa; }
+
+      section {
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: sans-serif;
+        position: relative; /* 波を配置するための基準点 */
+      }
+      .section-blue { background-color: #0077ff; }
+      .section-purple { background-color: #6c5ce7; }
+
+      /* 波を閉じ込めるコンテナ */
+      .wave-container {
+        position: absolute; /* セクション内の絶対配置に変更 */
+        top: 0; /* セクションの一番上に配置 */
+        left: 0;
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+      }
+
+      /* 波の本体 */
+      .wave-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%; /* 画面幅の2倍にして無限ループの準備 */
+        height: 100%;
+        background-repeat: repeat-x;
+        background-size: 50% 100%; /* 幅の半分=画面幅1つ分のサイズで波を描画 */
+      }
+
+      /* --- パターン1: 1つの緩やかな波 --- */
+      /* 左端(0,160)から始まり、右端(1440,160)で同じ高さに戻る滑らかな波 */
+      .wave-single {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%23f8f9fa' d='M0,160 C240,100 480,220 720,160 C960,100 1200,220 1440,160 V0 H0 Z'%3E%3C/path%3E%3C/svg%3E");
+        animation: wave-loop-forward 15s linear infinite;
+      }
+
+      /* --- パターン2: 交差する波 --- */
+      .wave-cross-back {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%230077ff' fill-opacity='0.4' d='M0,160 C360,80 720,240 1080,160 C1200,120 1320,200 1440,160 V0 H0 Z'%3E%3C/path%3E%3C/svg%3E");
+        animation: wave-loop-forward 20s linear infinite;
+      }
+
+      .wave-cross-front {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%230077ff' d='M0,160 C360,240 720,80 1080,160 C1200,200 1320,120 1440,160 V0 H0 Z'%3E%3C/path%3E%3C/svg%3E");
+        animation: wave-loop-reverse 12s linear infinite;
+      }
+
+      /* --- アニメーション定義 --- */
+      /* 右から左へ:画面幅1つ分(50%)動かしてリセット */
+      @keyframes wave-loop-forward {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      /* 左から右へ */
+      @keyframes wave-loop-reverse {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+      }
