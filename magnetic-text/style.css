@@ -37,29 +37,3 @@
   left: 0;
 }
 
-
-.focus-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 20px;
-}
-
-.focus-list li {
-  font-size: 1.5rem;
-  transition: opacity 0.3s, filter 0.3s;
-  cursor: pointer;
-}
-
-/* リスト全体がホバーされたとき、すべてのliを薄く・ぼかす */
-.focus-list:hover li {
-  opacity: 0.3;
-  filter: blur(2px);
-}
-
-/* その中で、マウスが乗っているliだけをハッキリさせる */
-.focus-list li:hover {
-  opacity: 1;
-  filter: blur(0);
-  transform: scale(1.05); /* ほんの少し大きく */
-}
