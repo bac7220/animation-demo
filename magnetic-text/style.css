@@ -1,0 +1,92 @@
+.nav-list{
+  display: flex;
+  gap: 24px;
+}
+
+.nav-item{
+  list-style: none;
+}
+
+.nav-link {
+  display: inline-block;
+  overflow: hidden; /* はみ出た文字を隠す */
+  font-family: sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  line-height: 1.2em;
+  height: 1.2em;
+}
+
+.nav-text {
+  display: block;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* ホバー時に上に1.2em分（1行分）ずらす */
+.nav-link:hover .nav-text {
+  transform: translateY(-1.2em);
+}
+
+/* 疑似要素で「ホバー後の文字」を下に配置しておく */
+.nav-text::after {
+  content: attr(data-hover);
+  position: absolute;
+  top: 1.2em;
+  left: 0;
+}
+
+.btn-outline {
+  position: relative;
+  padding: 15px 40px;
+  background: transparent;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border: 1px solid #000;
+  /* 最初はクリップして隠しておく */
+  clip-path: inset(0 100% 0 0); 
+  transition: clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-outline:hover::before {
+  /* 左から右へ線が描かれる */
+  clip-path: inset(0 0 0 0);
+}
+
+.btn-outline:hover {
+  color: #000;
+}
+
+.focus-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.focus-list li {
+  font-size: 1.5rem;
+  transition: opacity 0.3s, filter 0.3s;
+  cursor: pointer;
+}
+
+/* リスト全体がホバーされたとき、すべてのliを薄く・ぼかす */
+.focus-list:hover li {
+  opacity: 0.3;
+  filter: blur(2px);
+}
+
+/* その中で、マウスが乗っているliだけをハッキリさせる */
+.focus-list li:hover {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1.05); /* ほんの少し大きく */
+}
