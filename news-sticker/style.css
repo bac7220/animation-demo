@@ -1,0 +1,65 @@
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image {
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+
+.v-marquee {
+  position: absolute;
+  bottom: 5%;  /* 画像の下端からの距離 */
+  right: 5%;   /* 画像の右端からの距離 */
+  width: 80%;  /* スマホなどではみ出さないように */
+  max-width: 400px; /* PCではこの幅で固定 */
+  height: 150px;
+  background: rgba(253, 253, 253, 0.9); /* 少し透かすとおしゃれです */
+  /* その他の設定は今のままでOK */
+  overflow:  hidden;
+  border-left: 4px solid #ff0d00;
+  padding: 10px 20px;
+}
+
+.v-marquee-inner {
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+  animation: v-scroll 10s linear infinite;
+}
+
+.v-item {
+  height: 50px; /* 1項目の高さを固定するとループが綺麗です */
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+}
+
+/* ホバーで一時停止 */
+.v-marquee:hover .v-marquee-inner {
+  animation-play-state: paused;
+}
+
+@keyframes v-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  } /* 半分まで上がったらリセット */
+}
