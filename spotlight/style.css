@@ -1,0 +1,71 @@
+:root {
+  --card-bg: #111;
+  --light-color: rgba(255, 255, 255, 0.2); /* 光を少し強めに設定 */
+}
+
+body {
+  margin: 0;
+  background-color: #050505; /* 背景を極限まで暗くして光を強調 */
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h3,
+p,
+span {
+  color: #fff;
+}
+
+.section-title {
+  color: white;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* カードを並べるグリッド */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  padding: 20px;
+}
+
+.spotlight-card {
+  position: relative;
+  width: 350px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #333; /* 枠線を最初から見えるように */
+}
+
+/* 光のレイヤーを「一番上」に配置する */
+.spotlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* 上下左右0の位置 */
+  z-index: 2; /* コンテンツより上に */
+  background: radial-gradient(
+    400px circle at var(--x, 50%) var(--y, 50%),
+    var(--light-color),
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none; /* ←重要：これがないと文字が選択できなくなります */
+}
+
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+.card-content {
+  padding: 40px 30px;
+  position: relative;
+  z-index: 1; /* 光より下に配置 */
+}
