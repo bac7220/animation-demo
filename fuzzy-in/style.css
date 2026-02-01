@@ -1,0 +1,36 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+section.black {
+  background-color: black;
+  color: white;
+}
+
+/* アニメーションの定義 */
+@keyframes fuzzyFade {
+  0% {
+    opacity: 0;
+    filter: blur(10px); /* 最初は強めにボカす */
+    transform: scale(0.95); /* ほんの少し小さくしておくと、より奥行きが出ます */
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0); /* 最終的にクッキリさせる */
+    transform: scale(1);
+  }
+}
+
+.fuzzy {
+  opacity: 0;
+}
+
+/* 適用するクラス */
+.fuzzy-in {
+  /* 0.5sで実行。イージングは「最後がゆっくり」なものを指定すると綺麗です */
+  animation: fuzzyFade 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
