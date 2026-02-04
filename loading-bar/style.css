@@ -1,0 +1,48 @@
+/* 画面中央に配置
+.loader-wrap {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  z-index: 999;
+  opacity: 1;
+  transform: translateY(0);
+   transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out; 
+} */
+/* バータイプ専用のコンテナ設定 */
+.loader-wrap.bar-type {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px; /* バーの太さ */
+  background-color: #eee;
+  z-index: 9999;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #3498db;
+  /* 左から右へ伸びるアニメーション */
+  animation: progress 2s infinite ease-in-out;
+  transform-origin: left; /* 左端を起点にする */
+}
+
+@keyframes progress {
+  0% { transform: scaleX(0); }
+  50% { transform: scaleX(0.5); }
+  100% { transform: scaleX(1); }
+}
+
+/* 読み込まれたら消える */
+.loader-wrap.is-hide {
+  opacity: 0;
+  /* transform: translateY(-30px); */
+  z-index: -1;
+  pointer-events: none;
+}
