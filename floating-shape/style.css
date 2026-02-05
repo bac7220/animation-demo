@@ -1,0 +1,37 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.blob-shape {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  z-index: -1;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #f1fb93 0%, #f5c857 100%);
+
+  /* 8つの値を指定して不定形にする */
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+
+  /* 浮遊 + 形の変化アニメーション */
+  animation: morph 6s ease-in-out infinite;
+}
+
+@keyframes morph {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+    /* 途中で角の丸みを変えることで、うねうね動く */
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
